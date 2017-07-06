@@ -1,8 +1,10 @@
 import React from 'react';
 
-export default ({ task, onDelete }) => (
-    <div>
-        <span>{task}</span>
-        <button onClick={onDelete}>x</button>
+// leave the implementation of Note to the mother component
+export default ({ children, ...props }) => (
+    <div {...props}>
+        {children}
     </div>
 );
+
+
