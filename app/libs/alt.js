@@ -1,6 +1,13 @@
 // keep alt as a saparate module so the application will use alt as singletion instant
 import Alt from 'alt'; 
+import makeFinalStore from 'alt-utils/lib/makeFinalStore';
 
-const alt = new Alt(); 
+class Flux extends Alt {
+  constructor(config) {
+    super(config);
+    this.FinalStore = makeFinalStore(this);
+  }
+}
 
-export default alt;
+const flux = new Flux();
+export default flux;
