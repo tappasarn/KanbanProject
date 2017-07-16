@@ -29,6 +29,7 @@ function connect(state = () => { }, actions = {}, target) {
             const stores = flux.stores;
             const composedStores = composeStores(stores);
 
+            // TODO : look up doc about this method
             return React.createElement(target, {
                 ...Object.assign(
                     {}, this.props, state(composedStores), actions)
