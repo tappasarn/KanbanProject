@@ -1,3 +1,5 @@
+// DOTO : port this class to a function
+
 import React from 'react';
 import uuid from 'uuid';
 import Notes from './Notes';
@@ -12,26 +14,10 @@ import connect from '../libs/connect';
  * @extends {React.Component}
  */
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            notes: [
-                {
-                    id: uuid.v4(),
-                    task: 'Learn React'
-                },
-                {
-                    id: uuid.v4(),
-                    task: 'Do laundry'
-                }
-            ]
-        };
-    }
     render() {
-        const { notes } = this.state;
+        const {notes} = this.props;
         return (
             <div>
-                {this.props.test}
                 <button className="add-note" onClick={this.addNote}>+</button>
                 <Notes
                     notes={notes}
@@ -92,6 +78,8 @@ class App extends React.Component {
     }
 }
 
-export default connect(() => ({
-  test: 'test'
+// connect is a higher order func that will return anouther func that takes App as param
+// connect takes function as the first param which will return an onject of notes
+export default connect(({ notes }) => ({
+    notes
 }))(App)

@@ -3,6 +3,7 @@ import React from 'react';
 export default (state, actions) => {
     if (typeof state === 'function' ||
         (typeof state === 'object' && Object.keys(state).length)) {
+
         return target => connect(state, actions, target);
     }
     return target => props => (
@@ -27,6 +28,7 @@ function connect(state = () => { }, actions = {}, target) {
             const { flux } = this.context;
             const stores = flux.stores;
             const composedStores = composeStores(stores);
+
             return React.createElement(target, {
                 ...Object.assign(
                     {}, this.props, state(composedStores), actions)
