@@ -1,4 +1,3 @@
-
 export default function (alt, storage, storageName) {
     try {
         alt.bootstrap(storage.get(storageName));
