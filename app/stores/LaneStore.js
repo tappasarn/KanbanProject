@@ -45,4 +45,11 @@ export default class LaneStore {
             })
         });
     }
+    delete(id) {
+        // this only remove lane object from lane store
+        // note objects that lane contain reference still remain in their own store just not display
+        this.setState({
+            lanes: this.lanes.filter(lane => lane.id !== id)
+        });
+    }
 }
